@@ -1,0 +1,48 @@
+------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\shale\OneDrive\Desktop\Data Analysis Project\ProjectFinal.log
+  log type:  text
+ opened on:  11 Dec 2022, 23:55:47
+
+. set more off
+
+. 
+. import excel "C:\Users\shale\OneDrive\Desktop\Data Analysis Project\Data Analysis Group Project Data - SumanthiranS, HushamS, YooE
+> .xlsx", sheet("Sheet1") firstrow
+(11 vars, 1,000 obs)
+
+. 
+. rename peace conflict
+
+. gen gdp = GDP/1000
+(864 missing values generated)
+
+. 
+. regress LifeExpectancy PoliticalRights 
+
+      Source |       SS           df       MS      Number of obs   =       136
+-------------+----------------------------------   F(1, 134)       =     62.25
+       Model |  2285.18812         1  2285.18812   Prob > F        =    0.0000
+    Residual |  4919.28065       134  36.7110496   R-squared       =    0.3172
+-------------+----------------------------------   Adj R-squared   =    0.3121
+       Total |  7204.46876       135  53.3664353   Root MSE        =     6.059
+
+---------------------------------------------------------------------------------
+ LifeExpectancy | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+----------------+----------------------------------------------------------------
+PoliticalRights |    .139438   .0176733     7.89   0.000     .1044832    .1743927
+          _cons |    65.8717   1.136471    57.96   0.000     63.62396    68.11945
+---------------------------------------------------------------------------------
+
+. eststo first
+
+. twoway (scatter LifeExpectancy PoliticalRights) (lfit LifeExpectancy PoliticalRights),
+
+. rvfplot, yline(0)
+
+. outreg2 using first.doc, replace
+first.doc
+dir : seeout
+
+. asdoc estat imtest, white
+(File Myfile.doc already exists, option append was assumed)
