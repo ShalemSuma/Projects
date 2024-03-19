@@ -1,2 +1,2 @@
 # Projects
-Completed Research projects
+Completed Research Projects
