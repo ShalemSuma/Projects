@@ -1,2 +1,2 @@
 # Projects
-Research projects completed at NYU Abu Dhabi 
+Completed Research projects
